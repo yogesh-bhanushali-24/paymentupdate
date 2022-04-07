@@ -1,0 +1,30 @@
+<form novalidate #form="ngForm" (ngSubmit)="onsubmit(form)">
+    <input type="hidden" name="PaymentDetailId" [value]="service.formdata.paymentDetailId">
+    <div class="form-group">
+        <label for="">Card Owner Name</label>
+        <input name="CardOwnerName" class="form-control" placeholder="Enter Card Owner Name" #CardOwnerName="ngModel" [(ngModel)]="service.formdata.cardOwnerName" aria-describedby="helpId" required [class.invalid]="CardOwnerName.invalid && CardOwnerName.touched">
+    </div>
+    <div class="form-group">
+        <label for="">Card Number</label>
+        <input name="CardNumber" class="form-control" placeholder="Enter Card Number" #CardNumber="ngModel" [(ngModel)]="service.formdata.cardNumber" aria-describedby="helpId" required minlength="16" maxlength="16" [class.invalid]="CardNumber.invalid && CardNumber.touched">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="">Expiry Date</label>
+                <input name="expirationDate" class="form-control" placeholder="Enter Card Expiry Date" #expirationDate="ngModel" [(ngModel)]="service.formdata.expirationDate" aria-describedby="helpId" required minlength="5" maxlength="5" [class.invalid]="expirationDate.invalid && expirationDate.touched">
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="">securitycode</label>
+                <input type="password" name="SecurityCode" class="form-control" placeholder="Enter securitycode" #securityCode="ngModel" [(ngModel)]="service.formdata.securityCode" aria-describedby="helpId" required minlength="3" maxlength="3" [class.invalid]="securityCode.invalid && securityCode.touched">
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>
